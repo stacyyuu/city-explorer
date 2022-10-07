@@ -2,10 +2,11 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
+import Image from 'react-bootstrap/Image'
 
 
 class City extends React.Component {
-
   render() {
     return (
       <>
@@ -18,12 +19,31 @@ class City extends React.Component {
           </Form>
         </Container>
 
-        {this.props.location.display_name &&
-          <h2>The city we searched for is {this.props.location.display_name}</h2>
-        }
-        {<h2>The latitude is: {this.props.location.lat} </h2>}
-        {<h2>The longitude is: {this.props.location.lon}</h2>}
+        <Image
+          src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.props.location.lat},${this.props.location.lon}&zoom=15`}
+          alt='Map of City'
+        />
 
+        <Accordion>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>City Name</Accordion.Header>
+            <Accordion.Body>
+              <h2>{this.props.location.display_name}</h2>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>Latitude</Accordion.Header>
+            <Accordion.Body>
+              <h2>{this.props.location.lat}</h2>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Header>Longitude</Accordion.Header>
+            <Accordion.Body>
+              <h2>{this.props.location.lon}</h2>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </>
     )
   }
