@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import City from './City';
 import axios from 'axios';
+import Alert from 'react-bootstrap/Alert';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -24,13 +26,19 @@ class App extends React.Component {
     // q: SEARCH_STRING
     // format: 'json'
     event.preventDefault();
-    const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.searchQuery}&format=json`;
-    console.log('URL: ', url);
-    const response = await axios.get(url);
-    console.log('response object: ', response);
-    console.log('response.data[0]: ', response.data[0]);
-    this.setState({ location: response.data[0] });
+    try {
+      const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.searchQuery}&format=json`;
+      console.log('URL: ', url);
+      const response = await axios.get(url);
+      console.log('response object: ', response);
+      console.log('response.data[0]: ', response.data[0]);
+      this.setState({ location: response.data[0] });
+    } catch (error) {
+      <Alert key='primary' variant='primary'>
+      </Alert>
+    }
   }
+
 
   render() {
     return (
