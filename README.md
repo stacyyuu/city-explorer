@@ -20,3 +20,14 @@
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+---
+## WRRC
+
+<img src ="public/WRRC.png">
+
+Name of feature: Asynchronous code and APIs - Lab 6
+
+Estimate of time needed to complete: 2 hours
+
+Actual time needed to complete: 2 hours and 30 mins
