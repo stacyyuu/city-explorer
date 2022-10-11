@@ -1,7 +1,7 @@
 # City Explorer
 
 **Author**: Stacy Yu 
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 11.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 <!-- Every lab will get a new version  -->
 
 ## Overview
@@ -26,7 +26,7 @@
 
 <img src ="public/WRRC.png">
 
-Name of feature: Asynchronous code and APIs - Lab 6
+Name of feature: Creating a city explorer app - Lab 6
 
 Estimate of time needed to complete: 2 hours
 
