@@ -3,6 +3,7 @@ import './App.css';
 import City from './City';
 import axios from 'axios';
 import Weather from './Weather';
+import Alert from 'react-bootstrap/Alert';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class App extends React.Component {
       lon: '',
       location: '',
       weather: [],
-      errAlert: false
+      errAlert: false,
+      errMessage: ''
     }
   }
 
@@ -34,27 +36,29 @@ class App extends React.Component {
       const response = await axios.get(url);
       console.log('response object: ', response);
       console.log('response.data[0]: ', response.data[0]);
-      this.setState({ 
-        location: response.data[0], 
+      this.setState({
+        location: response.data[0],
         lat: response.data[0].lat,
         lon: response.data[0].lon,
-        errAlert: false }, () => this.getWeather());
+        errAlert: false
+      }, () => this.getWeather());
     } catch (error) {
-      console.log('Error: Unable to Geocode!');
-      this.setState({ location: {}, errAlert: true });
+      console.error(error);
+      this.setState({ location: {}, errAlert: true, errMessage: error.response.data.error });
     };
   }
 
-getWeather = async () => {
+  getWeather = async () => {
     try {
-        const url = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.lat}&lon=${this.state.lon}&searchQuery=${this.state.searchQuery}`;
-        let response = await axios.get(url);
-        console.log('Weather Data From Server: ', response.data);
-        this.setState({ weather: response.data });
+      const url = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.lat}&lon=${this.state.lon}&searchQuery=${this.state.searchQuery}`;
+      let response = await axios.get(url);
+      console.log('Weather Data From Server: ', response.data);
+      this.setState({ weather: response.data });
     } catch (error) {
-        this.setState({ errAlert: true, weather: [] });
+      console.error(error);
+      this.setState({ weather: [], errAlert: true, errMessage: error.response.data.error});
     };
-}
+  }
 
   render() {
     return (
@@ -65,9 +69,14 @@ getWeather = async () => {
           handleChange={this.handleChange}
           getLocation={this.getLocation}
           errAlert={this.state.errAlert}
-        />
+          />
+          {this.state.errAlert &&
+            <Alert key='primary' variant='primary'>
+              <h2>{this.state.errMessage}</h2>
+            </Alert>
+          }
         <Weather
-        weather={this.state.weather}
+          weather={this.state.weather}
         />
       </div>
     );

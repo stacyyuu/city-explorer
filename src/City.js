@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 import Image from 'react-bootstrap/Image'
-import Alert from 'react-bootstrap/Alert';
 
 class City extends React.Component {
   render() {
@@ -16,11 +15,6 @@ class City extends React.Component {
             <Button variant="primary" type="submit">
               Explore!
             </Button>
-            {this.props.errAlert &&
-              <Alert key='primary' variant='primary'>
-                <h2>Please enter valid location!</h2>
-              </Alert>
-            }
           </Form>
         </Container>
 
