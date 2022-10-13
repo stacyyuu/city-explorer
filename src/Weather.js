@@ -7,13 +7,14 @@ class Weather extends React.Component {
         return (
             <>
                 {this.props.weather.map(day => (
-                    <Accordion>
+                    < Accordion >
                         <Accordion.Item eventKey="0" >
-                            <Accordion.Header>{day.date}</Accordion.Header>
+                            <Accordion.Header>Weather on {day.date}</Accordion.Header>
                             <Accordion.Body>{day.description}</Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
-                ))}
+                ))
+                }
             </>
         )
     }
