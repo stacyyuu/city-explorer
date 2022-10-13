@@ -26,6 +26,8 @@
 
 <img src ="public/WRRC.png">
 
+---
+
 Name of feature: Creating a city explorer app - Lab 6
 
 Estimate of time needed to complete: 2 hours
