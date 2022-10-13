@@ -3,6 +3,7 @@ import './App.css';
 import City from './City';
 import axios from 'axios';
 import Weather from './Weather';
+import Movies from './Movies';
 import Alert from 'react-bootstrap/Alert';
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
       lon: '',
       location: '',
       weather: [],
+      movies: [],
       errAlert: false,
       errMessage: ''
     }
@@ -44,7 +46,7 @@ class App extends React.Component {
       }, () => this.getWeather());
     } catch (error) {
       console.error(error);
-      this.setState({ location: {}, errAlert: true, errMessage: error.response.data.error });
+      this.setState({ location: '', errAlert: true, errMessage: error.response.data.error });
     };
   }
 
@@ -56,9 +58,22 @@ class App extends React.Component {
       this.setState({ weather: response.data });
     } catch (error) {
       console.error(error);
-      this.setState({ weather: [], errAlert: true, errMessage: error.response.data.error});
+      this.setState({ weather: [], errAlert: true, errMessage: error.response.data.error });
     };
   }
+
+  getMovies = async () => {
+    try {
+      const url = `${process.env.REACT_APP_SERVER}/movies?api_key=${process.env.MOVIE_API_KEY}&query=${this.state.location}`;
+      let response = await axios.get(url);
+      console.log('Movie Data From Server: ', response.data);
+      this.setState({ movies: response.data });
+    } catch (error) {
+      console.error(error);
+      this.setState({ movies: [], errAlert: true, errMessage: error.response.data.error });
+    };
+  }
+
 
   render() {
     return (
@@ -69,14 +84,17 @@ class App extends React.Component {
           handleChange={this.handleChange}
           getLocation={this.getLocation}
           errAlert={this.state.errAlert}
-          />
-          {this.state.errAlert &&
-            <Alert key='primary' variant='primary'>
-              <h2>{this.state.errMessage}</h2>
-            </Alert>
-          }
+        />
+        {this.state.errAlert &&
+          <Alert key='primary' variant='primary'>
+            <h2>{this.state.errMessage}</h2>
+          </Alert>
+        }
         <Weather
           weather={this.state.weather}
+        />
+        <Movies
+          movies={this.state.movies}
         />
       </div>
     );
