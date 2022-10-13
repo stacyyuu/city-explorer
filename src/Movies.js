@@ -2,15 +2,15 @@ import React from 'react';
 import Accordion from "react-bootstrap/Accordion";
 
 
-class Weather extends React.Component {
+class Movies extends React.Component {
     render() {
         return (
             <>
-                {this.props.weather.map(day => (
+                {this.props.movies.map(title => (
                     < Accordion >
                         <Accordion.Item eventKey="0" >
-                            <Accordion.Header>Weather on {day.date}</Accordion.Header>
-                            <Accordion.Body><h2>{day.description}</h2></Accordion.Body>
+                            <Accordion.Header>Movies</Accordion.Header>
+                            <Accordion.Body>{title.name}</Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
                 ))
@@ -21,4 +21,4 @@ class Weather extends React.Component {
 }
 
 
-export default Weather;
+export default Movies;
