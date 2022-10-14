@@ -56,7 +56,7 @@ class App extends React.Component {
 
   getWeather = async () => {
     try {
-      const url = `${process.env.REACT_APP_SERVER}/weather?key=${process.env.WEATHER_API_KEY}&lat=${this.state.lat}&lon=${this.state.lon}`;
+      const url = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.lat}&lon=${this.state.lon}`;
       let response = await axios.get(url);
       console.log('Weather Data From Server: ', response.data);
       this.setState({ weather: response.data });
@@ -68,7 +68,7 @@ class App extends React.Component {
 
   getMovies = async () => {
     try {
-      const url = `${process.env.REACT_APP_SERVER}/movies?api_key=${process.env.MOVIE_API_KEY}&searchQuery=${this.state.searchQuery}`;
+      const url = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.searchQuery}`;
       let response = await axios.get(url);
       console.log('Movie Data From Server: ', response.data);
       this.setState({ movies: response.data });
