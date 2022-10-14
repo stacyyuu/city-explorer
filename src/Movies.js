@@ -1,5 +1,4 @@
 import React from 'react';
-import Accordion from "react-bootstrap/Accordion";
 import { Row, Col, Card } from 'react-bootstrap';
 
 class Movies extends React.Component {
@@ -10,19 +9,28 @@ class Movies extends React.Component {
                     <Col>
                         <Card>
                             <Card.Img 
-                                src={title.img_url}
+                                src={title.image_url}
                                 alt={title.overview}
                             />
                             <Card.Body>
-                                <Card.text>
+                                <Card.Text>
                                     Title: {title.original_title}
-                                </Card.text>
-                                <Card.text>
+                                </Card.Text>
+                                <Card.Text>
                                     Overview: {title.overview}
-                                </Card.text>
-                                <Card.text>
-                                    Released: {title.release_date}
-                                </Card.text>
+                                </Card.Text>
+                                <Card.Text>
+                                    Release Date: {title.released_on}
+                                </Card.Text>
+                                <Card.Text>
+                                    Vote Count: {title.vote_count}
+                                </Card.Text>
+                                <Card.Text>
+                                    Average Votes: {title.average_votes}
+                                </Card.Text>
+                                <Card.Text>
+                                    Popularity: {title.popularity}
+                                </Card.Text>
                             </Card.Body>
                         </Card>
                     </Col>
