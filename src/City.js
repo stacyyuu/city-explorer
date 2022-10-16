@@ -11,8 +11,8 @@ class City extends React.Component {
       <>
         <Container>
           <Form onSubmit={this.props.getLocation}>
-            <Form.Control type="text" onChange={this.props.handleChange} placeholder="Search for a city" />
-            <Button variant="primary" type="submit">
+            <Form.Control className= "formInput" type="text" onChange={this.props.handleChange} placeholder="Search for a city..." />
+            <Button variant="secondary" type="submit">
               Explore!
             </Button>
           </Form>
@@ -20,9 +20,10 @@ class City extends React.Component {
 
         {this.props.location.display_name &&
           <>
-            <div className = "mapImage">
+            <div>
               <Image
-                src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.props.location.lat},${this.props.location.lon}&zoom=15`}
+                className='mapImage'
+                src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.props.location.lat},${this.props.location.lon}&zoom=14`}
                 alt='Map of City'
               />
             </div>
