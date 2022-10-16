@@ -4,7 +4,7 @@ import { Row, Col, Card } from 'react-bootstrap';
 class Movies extends React.Component {
     render() {
         return (
-            <Row>
+            <Row xs={2} md={4} className="g-4">
                 {this.props.movies.map(title => (
                     <Col>
                         <Card>
@@ -14,7 +14,7 @@ class Movies extends React.Component {
                             />
                             <Card.Body>
                                 <Card.Text>
-                                    Title: {title.original_title}
+                                    Title: {title.name}
                                 </Card.Text>
                                 <Card.Text>
                                     Overview: {title.overview}

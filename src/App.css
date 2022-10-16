@@ -1,5 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .App {
   text-align: center;
 }
 
+body > footer {
+  position: sticky;
+  top: 100vh;
+}
 
+.cityView {
+  height: 600px;
+  width: 880px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  background-color: #9FB5A3;
+  color: white;
+  height: 95px;
+  font-size: 60px;
+}
+
+.formInput {
+  width: 600px;
+  margin: auto;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.mapImage {
+  margin-top: 15px;
+  height: 800px;
+  width: 880px;
+  margin-bottom: 15px;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 30px;
+  height: 50px;
+  color: white;
+  background-color: #9FB5A3;
+}

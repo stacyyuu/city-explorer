@@ -4,7 +4,10 @@ import City from './City';
 import axios from 'axios';
 import Weather from './Weather';
 import Movies from './Movies';
+import Footer from './Footer';
+import Header from './Header';
 import Alert from 'react-bootstrap/Alert';
+import Image from 'react-bootstrap/Image';
 
 class App extends React.Component {
   constructor(props) {
@@ -82,23 +85,31 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>City Explorer</h1>
+        <Header
+        />
+        <Image 
+        className = 'cityView'
+        src = {'https://images.unsplash.com/photo-1493514789931-586cb221d7a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80'}
+        alt = 'Night view of a city'
+        />
+        {this.state.errAlert &&
+          <Alert key='primary' variant='primary'>
+            <h2>{this.state.errMessage}</h2>
+          </Alert>
+        }        
         <City
           location={this.state.location}
           handleChange={this.handleChange}
           getLocation={this.getLocation}
           errAlert={this.state.errAlert}
         />
-        {this.state.errAlert &&
-          <Alert key='primary' variant='primary'>
-            <h2>{this.state.errMessage}</h2>
-          </Alert>
-        }
         <Weather
           weather={this.state.weather}
         />
         <Movies
           movies={this.state.movies}
+        />
+        <Footer
         />
       </div>
     );
